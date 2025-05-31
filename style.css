@@ -36,9 +36,9 @@ body {
     direction: rtl; /* Right-to-left for Arabic */
     text-align: right; /* Align text to the right for Arabic */
     line-height: 1.6;
-    display: flex; /* Flexbox for centering game-container */
+    display: flex; /* Flexbox for game-container */
     flex-direction: column; /* Stack children vertically */
-    justify-content: flex-start; /* Align content to the top of the body */
+    justify-content: flex-start; /* IMPORTANT: Align content to the TOP, allowing natural scroll */
     align-items: center; /* Center horizontally */
     min-height: 100vh; /* Ensure body takes at least full viewport height */
     background-color: var(--bg-deep-dark); /* Dark background for the animation */
@@ -126,7 +126,7 @@ body {
     max-width: 900px;
     width: 100%;
     border: 1px solid var(--border-color);
-    margin: auto; /* Center the container when body is flex */
+    margin: 20px auto; /* Added top/bottom margin to center the container but also allow it to scroll */
 }
 
 .app-header {
@@ -545,7 +545,7 @@ h1 {
 @media (max-width: 768px) {
     .game-container {
         padding: 25px;
-        margin: 15px;
+        margin: 15px auto; /* Allow margin auto for horizontal centering */
     }
     h1 {
         font-size: 2.5em;
