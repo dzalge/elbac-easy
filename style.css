@@ -1,0 +1,620 @@
+/* Importing Google Fonts for a modern Arabic look */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=IBM+Plex+Sans+Arabic:wght@400;600;700&display=swap');
+
+:root {
+    /* Color Palette */
+    --primary-color: #4CAF50; /* Green - For success/main actions */
+    --secondary-color: #2196F3; /* Blue - For interactive elements */
+    --accent-color: #FFC107; /* Amber - For warnings/help */
+    --text-dark: #333;
+    --text-light: #f8f8f8;
+    --bg-light: #f4f7f6;
+    --bg-medium: #e0e0e0;
+    --bg-dark: #2c3e50; /* Dark blue-grey */
+    --border-color: #ccc;
+    --shadow-light: rgba(0, 0, 0, 0.1);
+    --shadow-medium: rgba(0, 0, 0, 0.2);
+    
+    /* Animation specific colors */
+    --star-color: rgba(255, 255, 255, 0.8);
+    --bg-deep-dark: #1a1a2e; /* Even darker background for animation */
+}
+
+/* Base styles for HTML and Body */
+html {
+    height: 100%;
+    overflow-y: scroll; /* Always show scrollbar to prevent content jump */
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+body {
+    height: 100%; /* Important for `html` to define scrollable area */
+    margin: 0;
+    padding: 0;
+    font-family: 'Cairo', sans-serif; /* Primary Arabic font */
+    color: var(--text-dark);
+    direction: rtl; /* Right-to-left for Arabic */
+    text-align: right; /* Align text to the right for Arabic */
+    line-height: 1.6;
+    display: flex; /* Flexbox for centering game-container */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    min-height: 100vh; /* Ensure body takes at least full viewport height */
+    background-color: var(--bg-deep-dark); /* Dark background for the animation */
+    position: relative; /* For z-index stacking */
+    box-sizing: border-box; /* Include padding in height calculation for consistency */
+    padding: 20px 0; /* Add vertical padding for content when it scrolls */
+}
+
+
+/* Background Animation */
+.background-animation {
+    position: fixed; /* Fixed to cover the whole viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%); /* Deep space gradient */
+    overflow: hidden; /* Hide overflow WITHIN the animation div */
+    z-index: -1; /* Send it behind other content */
+}
+
+/* Stars for the animation */
+.background-animation::before,
+.background-animation::after {
+    content: '';
+    position: absolute;
+    background-color: var(--star-color);
+    border-radius: 50%;
+}
+
+/* Small stars */
+.background-animation::before {
+    width: 2px;
+    height: 2px;
+    box-shadow: 
+        /* Generate many stars with random positions */
+        10px 10px 0 var(--star-color), 20px 30px 0 var(--star-color), 30px 50px 0 var(--star-color), 40px 70px 0 var(--star-color), 50px 90px 0 var(--star-color), 
+        60px 110px 0 var(--star-color), 70px 130px 0 var(--star-color), 80px 150px 0 var(--star-color), 90px 170px 0 var(--star-color), 100px 190px 0 var(--star-color),
+        110px 210px 0 var(--star-color), 120px 230px 0 var(--star-color), 130px 250px 0 var(--star-color), 140px 270px 0 var(--star-color), 150px 290px 0 var(--star-color),
+        160px 310px 0 var(--star-color), 170px 330px 0 var(--star-color), 180px 350px 0 var(--star-color), 190px 370px 0 var(--star-color), 200px 390px 0 var(--star-color),
+        210px 10px 0 var(--star-color), 220px 30px 0 var(--star-color), 230px 50px 0 var(--star-color), 240px 70px 0 var(--star-color), 250px 90px 0 var(--star-color), 
+        /* ... add more lines for a denser star field, keeping coordinates unique */
+        300px 20px 0 var(--star-color), 350px 40px 0 var(--star-color), 400px 60px 0 var(--star-color), 450px 80px 0 var(--star-color), 500px 100px 0 var(--star-color),
+        550px 120px 0 var(--star-color), 600px 140px 0 var(--star-color), 650px 160px 0 var(--star-color), 700px 180px 0 var(--star-color), 750px 200px 0 var(--star-color),
+        800px 220px 0 var(--star-color), 850px 240px 0 var(--star-color), 900px 260px 0 var(--star-color), 950px 280px 0 var(--star-color), 1000px 300px 0 var(--star-color),
+        1050px 320px 0 var(--star-color), 1100px 340px 0 var(--star-color), 1150px 360px 0 var(--star-color), 1200px 380px 0 var(--star-color), 1250px 400px 0 var(--star-color),
+        1300px 420px 0 var(--star-color), 1350px 440px 0 var(--star-color), 1400px 460px 0 var(--star-color), 1450px 480px 0 var(--star-color), 1500px 500px 0 var(--star-color),
+        1550px 520px 0 var(--star-color), 1600px 540px 0 var(--star-color), 1650px 560px 0 var(--star-color), 1700px 580px 0 var(--star-color), 1750px 600px 0 var(--star-color),
+        1800px 620px 0 var(--star-color), 1850px 640px 0 var(--star-color), 1900px 660px 0 var(--star-color), 1950px 680px 0 var(--star-color), 2000px 700px 0 var(--star-color),
+        2050px 720px 0 var(--star-color), 2100px 740px 0 var(--star-color), 2150px 760px 0 var(--star-color), 2200px 780px 0 var(--star-color), 2250px 800px 0 var(--star-color),
+        2300px 820px 0 var(--star-color), 2350px 840px 0 var(--star-color), 2400px 860px 0 var(--star-color), 2450px 880px 0 var(--star-color), 2500px 900px 0 var(--star-color);
+    animation: stars-small 100s linear infinite; /* Longer animation for slower effect */
+}
+
+/* Medium stars (larger and faster) */
+.background-animation::after {
+    width: 3px;
+    height: 3px;
+    box-shadow: 
+        100px 200px 0 rgba(255, 255, 255, 0.9), 250px 400px 0 rgba(255, 255, 255, 0.9), 400px 600px 0 rgba(255, 255, 255, 0.9), 550px 800px 0 rgba(255, 255, 255, 0.9),
+        700px 100px 0 rgba(255, 255, 255, 0.9), 850px 300px 0 rgba(255, 255, 255, 0.9), 1000px 500px 0 rgba(255, 255, 255, 0.9), 1150px 700px 0 rgba(255, 255, 255, 0.9),
+        1300px 900px 0 rgba(255, 255, 255, 0.9), 1450px 100px 0 rgba(255, 255, 255, 0.9), 1600px 300px 0 rgba(255, 255, 255, 0.9), 1750px 500px 0 rgba(255, 255, 255, 0.9);
+    animation: stars-medium 150s linear infinite; /* Medium animation speed */
+}
+
+/* Animation keyframes for stars */
+@keyframes stars-small {
+    from { transform: translateY(0); }
+    to { transform: translateY(-2000px); /* Move stars upwards, effectively creating downward motion */ }
+}
+@keyframes stars-medium {
+    from { transform: translateY(0); }
+    to { transform: translateY(-2500px); }
+}
+
+
+.game-container {
+    position: relative; /* To make it appear above the background-animation */
+    z-index: 1; /* Ensure it's above the background */
+    background-color: rgba(255, 255, 255, 0.95); /* Slightly transparent white for better blend with background */
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5); /* Stronger shadow against dark background */
+    padding: 40px;
+    text-align: center;
+    max-width: 900px;
+    width: 100%;
+    border: 1px solid var(--border-color);
+    margin: auto; /* Center the container when body is flex */
+}
+
+.app-header {
+    margin-bottom: 30px;
+}
+
+h1 {
+    font-family: 'IBM Plex Sans Arabic', sans-serif; /* Distinct font for title */
+    color: var(--bg-dark);
+    margin-bottom: 8px;
+    font-size: 3em;
+    text-shadow: 1px 1px 2px var(--shadow-light);
+}
+
+.tagline {
+    color: #7f8c8d;
+    font-style: italic;
+    font-size: 1.1em;
+    margin-bottom: 0;
+}
+
+.section {
+    margin-bottom: 30px;
+    padding: 25px;
+    border: 1px dashed var(--bg-medium);
+    border-radius: 10px;
+    background-color: #fdfdff;
+}
+
+.section.hidden {
+    display: none;
+}
+
+.section-title {
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
+    color: var(--primary-color);
+    margin-bottom: 25px;
+    font-size: 2.2em;
+    position: relative;
+    padding-bottom: 10px;
+}
+.section-title::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 50px;
+    height: 3px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+
+
+.instructions {
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 1.05em;
+}
+
+/* Category Sections */
+.category-section {
+    background-color: var(--bg-light);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 10px var(--shadow-light);
+}
+
+.category-title {
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
+    color: var(--secondary-color);
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 5px;
+    display: inline-block;
+}
+
+/* Styles for sub-category buttons container */
+.sub-category-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.flashcard-category-inputs {
+    margin-bottom: 20px;
+    max-height: 350px; /* Increased height for more visibility */
+    overflow-y: auto; /* Allow scrolling within this specific content area */
+    padding-right: 15px; /* For scrollbar and aesthetic */
+    padding-left: 5px; /* For consistent padding */
+}
+
+/* Custom Scrollbar Styling */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 10px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: var(--secondary-color);
+    border-radius: 5px;
+    border: 2px solid #f5f5f5;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+    background-color: #f5f5f5;
+    border-radius: 5px;
+}
+
+
+.flashcard-entry {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+    align-items: flex-start;
+    background-color: #fff;
+    padding: 12px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    border: 1px solid #eee;
+}
+
+.flashcard-entry input[type="text"],
+.flashcard-entry textarea {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 1em;
+    font-family: 'Cairo', sans-serif;
+    resize: vertical;
+    min-height: 45px;
+    text-align: right;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+}
+
+.flashcard-entry textarea {
+    min-height: 70px;
+}
+
+.flashcard-entry input[type="text"]:focus,
+.flashcard-entry textarea:focus {
+    border-color: var(--secondary-color);
+    outline: none;
+    box-shadow: 0 0 8px rgba(33, 150, 243, 0.3);
+}
+
+.remove-entry-btn {
+    background-color: #F44336; /* Red */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 14px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    flex-shrink: 0; /* Prevent button from shrinking */
+    line-height: 1; /* For better 'X' centering */
+}
+
+.remove-entry-btn:hover {
+    background-color: #D32F2F;
+    transform: scale(1.05);
+}
+
+.category-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+
+.action-btn {
+    background-color: #9E9E9E; /* Grey */
+    color: white;
+    border: none;
+    padding: 14px 30px;
+    font-size: 1.15em;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+    margin: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.action-btn:hover {
+    background-color: #757575;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.action-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.action-btn.primary-btn {
+    background-color: var(--primary-color);
+}
+
+.action-btn.primary-btn:hover {
+    background-color: #388E3C;
+}
+
+.start-category-quiz-btn:disabled,
+.action-btn:disabled {
+    background-color: #BDBDBD; /* Lighter grey for disabled */
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+    opacity: 0.8;
+}
+
+/* Quiz Section Styles */
+.info-panel {
+    display: flex;
+    justify-content: space-around;
+    background-color: var(--bg-medium);
+    padding: 18px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    border: 1px solid #B0BEC5;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+    color: var(--bg-dark);
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
+}
+
+.info-panel p {
+    font-size: 1.25em;
+    font-weight: 600;
+    margin: 0;
+}
+.info-panel span {
+    font-weight: 700;
+    color: var(--secondary-color);
+}
+
+.question-box {
+    background-color: #E3F2FD; /* Light blue */
+    border: 2px solid var(--secondary-color);
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 35px;
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 5px 15px rgba(33, 150, 243, 0.2);
+}
+
+.question-type {
+    font-size: 1em;
+    color: #555;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.question-text {
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
+    font-size: 1.8em;
+    font-weight: 700;
+    color: var(--bg-dark);
+    text-align: center;
+    max-width: 90%; /* Prevent overflow */
+    word-wrap: break-word; /* Break long words */
+}
+
+.answer-area {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+#feedback-area {
+    margin-top: 25px;
+    min-height: 70px; /* Give space for messages */
+}
+
+.message {
+    font-size: 1.2em;
+    font-weight: 700;
+    margin-bottom: 15px;
+    padding: 10px 15px;
+    border-radius: 8px;
+}
+
+.message.success {
+    color: white;
+    background-color: var(--primary-color);
+    box-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);
+}
+
+.message.error {
+    color: white;
+    background-color: #F44336; /* Red */
+    box-shadow: 0 4px 8px rgba(244, 67, 54, 0.3);
+}
+
+.correct-info {
+    font-size: 1.05em;
+    color: var(--bg-dark);
+    margin-top: -10px;
+    margin-bottom: 20px;
+    font-style: italic;
+    font-weight: 600;
+    background-color: #FFFDE7; /* Light yellow background */
+    padding: 8px 15px;
+    border-radius: 6px;
+    border: 1px solid #FFECB3;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Choice buttons styling */
+.choice-buttons-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.choice-button {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 18px 25px;
+    font-size: 1.3em;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(33, 150, 243, 0.2);
+    font-family: 'Cairo', sans-serif;
+    font-weight: 600;
+}
+
+.choice-button:hover:not(:disabled) {
+    background-color: #1976D2; /* Darker blue */
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(33, 150, 243, 0.3);
+}
+
+.choice-button:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(33, 150, 243, 0.2);
+}
+
+.choice-button:disabled {
+    background-color: #CFD8DC; /* Light grey */
+    color: #607D8B;
+    cursor: not-allowed;
+    opacity: 0.7;
+    box-shadow: none;
+}
+
+.choice-button.correct {
+    background-color: var(--primary-color); /* Green for correct */
+    animation: flashGreen 0.6s ease-out;
+}
+
+.choice-button.incorrect {
+    background-color: #F44336; /* Red for incorrect */
+    animation: flashRed 0.6s ease-out;
+}
+
+/* Animation for correct/incorrect flash */
+@keyframes flashGreen {
+    0% { background-color: var(--primary-color); }
+    50% { background-color: #A5D6A7; /* Lighter green */ }
+    100% { background-color: var(--primary-color); }
+}
+@keyframes flashRed {
+    0% { background-color: #F44336; }
+    50% { background-color: #FFCDD2; /* Lighter red */ }
+    100% { background-color: #F44336; }
+}
+
+.help-btn {
+    background-color: var(--accent-color); /* Amber for help */
+    color: var(--bg-dark); /* Dark text on amber */
+    margin-top: 15px;
+    padding: 15px 30px;
+    font-weight: 700;
+    box-shadow: 0 4px 8px rgba(255, 193, 7, 0.3);
+}
+.help-btn:hover:not(:disabled) {
+    background-color: #FFB300; /* Darker amber */
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(255, 193, 7, 0.4);
+}
+.help-btn:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(255, 193, 7, 0.2);
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .game-container {
+        padding: 25px;
+        margin: 15px;
+    }
+    h1 {
+        font-size: 2.5em;
+    }
+    .section-title {
+        font-size: 1.8em;
+    }
+    .category-title {
+        font-size: 1.4em;
+    }
+    .flashcard-entry {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .remove-entry-btn {
+        width: 100%;
+        padding: 10px;
+    }
+    .action-btn {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+    .category-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .info-panel p {
+        font-size: 1em;
+    }
+    .question-text {
+        font-size: 1.4em;
+    }
+    .choice-button {
+        font-size: 1.1em;
+        padding: 15px;
+    }
+    .help-btn {
+        font-size: 1.1em;
+        padding: 12px 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2em;
+    }
+    .section-title {
+        font-size: 1.5em;
+    }
+    .category-section {
+        padding: 15px;
+    }
+    .flashcard-category-inputs {
+        max-height: 250px;
+    }
+    .flashcard-entry input, .flashcard-entry textarea {
+        font-size: 0.9em;
+        padding: 10px;
+    }
+    .remove-entry-btn {
+        font-size: 0.9em;
+    }
+    .info-panel p {
+        font-size: 0.9em;
+    }
+    .question-text {
+        font-size: 1.2em;
+    }
+    .choice-button {
+        font-size: 1em;
+        padding: 12px;
+    }
+}

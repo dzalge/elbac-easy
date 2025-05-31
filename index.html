@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إتقان المذكرات - أحداث وشخصيات مفصلة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=IBM+Plex+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-animation"></div>
+
+    <div class="game-container">
+        <header class="app-header">
+            <h1>إتقان المذكرات</h1>
+            <p class="tagline">تدريب مخصص لاستدعاء الأحداث التاريخية والشخصيات الهامة</p>
+        </header>
+
+        <div id="input-section" class="section">
+            <h2 class="section-title">أدخل بياناتك</h2>
+            <p class="instructions">أضف أحداثك التاريخية وتواريخها، والشخصيات وتعريفاتها.</p>
+            
+            <div class="category-section">
+                <h3 class="category-title">الأحداث التاريخية</h3>
+                <div class="sub-category-buttons">
+                    <button class="action-btn primary-btn start-category-quiz-btn" data-category="events" data-sub-category="coldWarEvents">بدء اختبار الحرب الباردة</button>
+                    <button class="action-btn primary-btn start-category-quiz-btn" data-category="events" data-sub-category="algerianRevolutionEvents">بدء اختبار الثورة الجزائرية</button>
+                    <button class="action-btn primary-btn start-category-quiz-btn" data-category="events" data-sub-category="palestineEvents">بدء اختبار أحداث فلسطين</button>
+                </div>
+                <div id="event-inputs" class="flashcard-category-inputs custom-scrollbar">
+                    </div>
+                <button class="action-btn add-entry-btn" data-category="events">أضف حدثاً جديداً</button>
+            </div>
+
+            <div class="category-section">
+                <h3 class="category-title">الشخصيات</h3>
+                <div class="sub-category-buttons">
+                    <button class="action-btn primary-btn start-category-quiz-btn" data-category="personalities" data-sub-category="coldWarPersonalities">بدء اختبار شخصيات الحرب الباردة</button>
+                    <button class="action-btn primary-btn start-category-quiz-btn" data-category="personalities" data-sub-category="algerianRevolutionPersonalities">بدء اختبار شخصيات الثورة الجزائرية</button>
+                </div>
+                <div id="personality-inputs" class="flashcard-category-inputs custom-scrollbar">
+                    </div>
+                <button class="action-btn add-entry-btn" data-category="personalities">أضف شخصية جديدة</button>
+            </div>
+
+            <p id="input-message" class="message"></p>
+        </div>
+
+        <div id="quiz-section" class="section hidden">
+            <div class="info-panel">
+                <p>النقاط: <span id="quiz-score-display">0</span></p>
+                <p>السؤال: <span id="question-count-display">0</span> / <span id="total-questions-display">0</span></p>
+                <p>النوع: <span id="quiz-category-display"></span></p>
+            </div>
+
+            <div class="question-box">
+                <p class="question-type">تحديك:</p>
+                <p id="quiz-question-display" class="question-text"></p>
+            </div>
+
+            <div class="answer-area">
+                <div id="choice-buttons-container" class="choice-buttons-container">
+                    </div>
+                <button id="help-button" class="action-btn help-btn">المساعدة (إزالة خيار)</button>
+            </div>
+
+            <div id="feedback-area">
+                <p id="quiz-feedback-display" class="message"></p>
+                <p id="correct-answer-display" class="correct-info hidden"></p>
+                <button id="next-question-btn" class="action-btn hidden">السؤال التالي</button>
+                <button id="restart-quiz-btn" class="action-btn hidden">إعادة الاختبار</button>
+                <button id="back-to-input-btn" class="action-btn hidden">العودة للإدخال</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
