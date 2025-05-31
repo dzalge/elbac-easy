@@ -391,13 +391,14 @@ document.addEventListener('DOMContentLoaded', () => {
         currentChoices = [];
 
         let distractorsPool = [];
+        // Determine the type of answers to collect for distractors based on the questionType
         if (questionType === 'termToDefinition') { // Question is Term, Answer is Definition (e.g., Personality Name -> Personality Definition)
-            // Collect all definitions from the current main category
+            // Collect all definitions from the current main category's sub-categories
             distractorsPool = Object.values(defaultData[currentMainCategoryKey])
                                 .flat()
                                 .map(card => card.definition);
         } else { // Question is Definition, Answer is Term (e.g., Personality Definition -> Personality Name)
-            // Collect all terms from the current main category
+            // Collect all terms from the current main category's sub-categories
             distractorsPool = Object.values(defaultData[currentMainCategoryKey])
                                 .flat()
                                 .map(card => card.term);
