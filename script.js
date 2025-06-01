@@ -23,15 +23,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const backToInputBtn = document.getElementById('back-to-input-btn');
 
     // --- Game State Variables ---
-    // These will store user-added flashcards if we enable user input saving/loading.
-    // For now, they are just temporary holders for what's in the input fields.
-    let eventsFlashcards = []; 
-    let personalitiesFlashcards = []; 
+    let eventsFlashcards = [];
+    let personalitiesFlashcards = [];
 
-    let currentQuizFlashcards = []; // The specific set of flashcards for the current quiz (based on sub-category)
-    let currentQuizCategoryLabel = ''; // e.g., 'أحداث الحرب الباردة'
-    let currentQuizSubCategoryKey = ''; // e.g., 'coldWarEvents'
-    let currentMainCategoryKey = ''; // e.g., 'events' or 'personalities'
+    let currentQuizFlashcards = [];
+    let currentQuizCategoryLabel = '';
+    let currentQuizSubCategoryKey = '';
+    let currentMainCategoryKey = '';
 
     let currentQuizIndex = 0;
     let quizScore = 0;
@@ -176,6 +174,103 @@ document.addEventListener('DOMContentLoaded', () => {
                 { term: 'جاك سوستال', definition: 'الحاكم العام الفرنسي في الجزائر 01/02/1955م عرف بمشروع سوستال 1955 ينص بتقديم مساعدات اغرائية لعزل الشعب عن الثورة لكنه فشل.' },
                 { term: 'شارل ديغول', definition: 'محرر باريس من المانيا في الح ع 2 عاد منقذا للجمهورية سنة 1958 لينتخب كأول رئيس للجمهورية الفرنسية الخامسة 1959 /1969،.حاول القضاء على الثورة لكنه فشل.' }
             ]
+        },
+        terms: {
+            historyTerms: [
+                { term: 'العالم الثالث', definition: 'مصطلح ظهر في1952 اطلقه الفرنسي ألفريد صوفي للتمييز بينه وبين العالم الرأسمالي و الاشتراكي و يضم دول أسيا وإفريقيا وأمريكا اللاتينية' },
+                { term: 'الراسمالية', definition: 'مذهب اقتصادي غربي يرتكز على مبدأ الحرية الفردية ويستبعد أي تدخل للدولة في الشؤون الاقتصادية.' },
+                { term: 'الاشتراكية', definition: 'نظام اقتصادي يقوم على مبدا الملكية الجماعية وهيمنة الدولة على مناحي الحياة وهو مناهض للرأسمالية تبناها الا .س  بعد نجاح الثورة البلشفية 1917' },
+                { term: 'الإمبريالية', definition: 'هيمنة اقتصادية وعسكرية و سياسية لدولة على دولة أخرى وهي صورة أخرى للاستعمار التقليدي .عرفت به الو م ا' },
+                { term: 'الشرق', definition: 'يقصد به الدول التي تقع في شرق أوربا و الصين و كوريا ش و كوبا والفيتنام التي طبقت النظام الشيوعي الاشتراكي أثناء الحرب الباردة 1945-1989' },
+                { term: 'الغرب', definition: 'الدول الديمقراطية الرأسمالية التي تقع غرب أوربا وكذلك الو.م .الأمريكية و كندا و استراليا واليابان وكورياج . التي طبقت النظام اللبيرالي الراسمالي أثناء الحرب الباردة 1945-1989' },
+                { term: 'حلف الناتو', definition: 'حلف عسكري يضم الدول الرأسمالية الليبرالية بزعامة الو م أ بهدف مواجهة إلمعسكر الشيوعي و حركات التحرر تاسس في 4/4/1949مقره بروكسل' },
+                { term: 'حلف وارسو', definition: 'حلف عسكري تابع للمعسكر الشيوعي الاشتراكبقيادة الا س يهدف إلى مواجهة تحديات الغرب الرأسمالي تاسس 14/05/1955 مقره وارسو' },
+                { term: 'الكريملين', definition: 'مقر الرئاسة السوفياتية بالعاصمة موسكو .' },
+                { term: 'البيت الأبيض', definition: 'هو مقر رئيس الو م أ بواشنطن' },
+                { term: 'الستار الحديدي', definition: 'مفهوم استعمله رئيس وزراء بريطانيا ونستون تشرشل سنة 1946 لما تحدث عن أطماع الاتحاد السوفياتي التوسعية في أوروبا الشرقية ويمتد من منطقة ستايتن على بحر البلطيق إلى ميناء تريستيا الايطالي .' },
+                { term: 'الصراع الاديولوجي', definition: 'هو صراع فكري حضاري بين الشيوعية و الرأسمالية بحيث يسعى كل طرف لفرض مذهبه على العالم' },
+                { term: 'سياسة ملء الفراغ', definition: 'سياسة استعمارية تبنتها الو .م .ا بعد ضعف و انسحاب القوى الاستعمارية قابلها الا. س بدعم حركات التحرر' },
+                { term: 'سياسة الاحتواء', definition: 'سياسة تقوم على إنشاء سلسلة من الأحلاف والقواعد العسكرية لتطويق وعزل الإ .س ومنع انتشار نفوذه وإيديولوجيته .' },
+                { term: 'التوازن النووي', definition: '( توازن الرعب ) أي امتلاك كل من الو .م. أ و الإ. س للسلاح النووي مما حال دون اندلاع مواجهة عسكرية بينهما .' },
+                { term: 'القطبية الثنائية', definition: 'نظام ميز العلاقات الدولية منذ 1945 و حتى 1989 بوجود قطبين مؤثرين على الساحة الدولية هما الو م أ والإ .س .' },
+                { term: 'سياسة الاحلاف', definition: 'سياسة تقوم على تأسيس تكتلات عسكرية تضم دولا ذات مصالح مشتركة بزعامة إحدى القوتين مثل الناتو وارسو' },
+                { term: 'سياسة المشاريع', definition: 'سعي كل طرف لاحتواء واستقطاب اكبر عدد من الدول في مواجهته للمعسكر الأخر عبر مشاريع سياسية واقتصادية' },
+                { term: 'الازمات الدولية', definition: 'هي الفترات التي تميزت فيه علاقات المعسكرين باللا استقرار والتوتر الحاد الذي لم يصل لمستوى الحرب الفعلية و من أبرزها الأزمة الكورية1953/1950 والكوبية 1962' },
+                { term: 'الحرب الباردة', definition: 'هي صراع اديولوجي مذهبي حضاري و مصلحي عرفه العالم من 1945-1989ا بين المعسكر الشرقي الشيوعي الاشتراكي بقيادة السوفيات و المعسكر الغربي الليبرالي الرأسمالي بزعامة الامريكان استعملت فيه مختلف الوسائل باستثناء المواجهةالعسكرية المباشرة .' },
+                { term: 'الدعاية المغرضة', definition: 'ابرز وسائل الحرب الباردة وتقوم على نشر الأفكار من أجل التأثير بوسائل الإذاعات ـ الصحف ـ ا التليفزيون ـ الإشهار' },
+                { term: 'الانفراج', definition: 'هي وصف لعلاقات المعسكرين بعد تسوية أزمة كوبا الخطيرة 1962حيث تم التخلص من الشدة و الضيق اللذان وصل إليهما' },
+                { term: 'التعايش السلمي', definition: 'مصطلح سياسي يقصد به إبعاد شبح الحرب الساخنة كوسيلة لتسوية الخلافات وحلها بالطرق السلمية مع القبول بازدواجية النظام الدولي في ظل التعايش و تبادل المصالح بين .1977 - 1956' },
+                { term: 'مشروع مارشال', definition: 'أعلنه الوزير الأمريكي جورج مارشال في 1947 ويقضي بتقديم مساعدات مالية قدرها 13 مليار $لأوروبا من أجل إعادة اعمار دمار الحرب ع 2 لكن بشروط .' },
+                { term: 'مبدأ جدانوف', definition: 'نسبة إلى السياسي السوفيتي جدانوف وهو رد على مبدا ترومان و على أساسه تم تأسيس مكتب الكومنفورم' },
+                { term: 'الكومنفورم', definition: 'مكتب الإخبار الشيوعي هدفه مواجهة المشاريع الأمريكية بجمع المعلومات عنها ولذلك اعتبره الغرب مكتب للتجسس على المصالح الغربية في العالم' },
+                { term: 'مشروع إيزنهاور 1957', definition: 'مشروع أمريكي برز بعد أزمة السويس يقضي بتقديم مساعدات مالية لدول الشرق الأوسط مقابل رفض الشيوعية وقبول الليبرالية .' },
+                { term: 'البريستوريكا و الغلاسنوست', definition: 'كلمتين روسيتين وظفهما ميخائيل غورباتشوف لوصف سياسته الساعية إلى إدخال الشفافية و إصلاح تسير أجهزة الدولة السوفياتية و الحزب الشيوعي .' },
+                { term: 'الأحادية القطبية', definition: 'نظام دولي جديد ساد العالم بعد انهيار المعسكر الشيوعي 1989 أصبحت فيه قيادة و توجيه العلاقات الدولية بيد الو م ا' },
+                { term: 'الشرعية الدولية', definition: 'يقصد بها الالتزام و تنفيذ القرارات الصادرة عن الهيئات الدولية كالأمم المتحدة وأجهزتها . ما يخدم مصالح الو م أ و حلفائها .' },
+                { term: 'النظام الدولي الجديد', definition: 'مفهوم برز بعد لقاء مالطا1989 و انهيار المعسكر الشيوعي يقوم على أساس توسيع مفاهيم العولمة و الليبرالية و فرض منطق الهيمنة الأمريكية على العالم .' },
+                { term: 'المنظمات غير الحكومية', definition: 'هي منظمات خيرية عالمية تعرف بالمجتمع المدني موظفوها متطوعون تنشط في كافة الميادين كالبيئة . حقوق الإنسان . الإغاثة . الرعاية الصحية و الطفولة' },
+                { term: 'الثورة التحريرية', definition: 'و هي فعل تحرري شامل ورد شعبي عنيف بهدف للسيادة والاستقلال من خلال العمليات العسكرية والسياسية لجيش و جبهة التحرير الوطني' },
+                { term: 'النشاط المسلح', definition: 'هي مجموع العمليات العسكرية و الفدائية التي قام بها الثوار الجزائريون داخل وخارج الجزائر في الفترة الممتدة بين 1954/1962 والتي انتهت بتحقيق الاستقلال .' },
+                { term: 'سياسة الإغراء', definition: 'سياسة الترغيب بواسطة المشاريع الاقتصادية و الاجتماعية التي أقرتها فرنسا في الجزائر بهدف تمزيق و السيطرة على مجتمعها و كسب عملاء .' },
+                { term: 'سياسة القمع', definition: 'استعمال فرنسا لأقصى وسائل التنكيل و الإبادة و التهجير و التجهيل لإخضاع و قتل روح المقاومة في الجزائريين كما حدث في سطيف و قالمة وملعب سكيكدة و غيرها' },
+                { term: 'تدويل القضية', definition: 'التعريف بالقضية الجزائرية في المحافل الدولية و الدعاية للثورة لكسب حلفاء لها' },
+                { term: 'الدبلوماسية', definition: 'تلك الجهود التي بذلتها الثورة بإنشاء جهاز دبلوماسي يتحرك بين عواصم الدول و المحافل الدولية لكسب الدعم السياسي و التعاطف العالمي مع الثورة الجزائرية' },
+                { term: 'مشروع جاك سوستال', definition: 'نسبة إلى صاحبه جاك سوستال الوالي العام للجزائر 1955 و قد تناول جوانب إدارية واقتصادية واجتماعية وثقافية بهدف دمج الجزائريين بفرنسا' },
+                { term: 'المكاتب العربية', definition: 'جهاز إداري خاص أقامته الإدارة الفرنسية يهتم بشؤون الجزائريين ويهدف إلى ضرب الثورة' },
+                { term: 'المحتشدات', definition: 'مراكز مسيجة ومغلقة و محروسة وهى إحدى الوسائل القمعية الرهيبة التي لجأت إليها فرنسا لخنق الثورة عن طريق عزل الشعب عنها وضمت قرابة 3 مليون جزائري .' },
+                { term: 'مشروع قسنطينة', definition: 'هو مشروع استعماري دعائي أعلنه ديغول في 3 أكتوبر 1958 بقسنطينة و تضمن بناء 200 ألف مسكن و توزيع 250 ألف هكتار من الأراضي على الجزائريين و توظيفهم .' },
+                { term: 'الجزائر جزائریة', definition: 'فكرة فرنسیة أعلن عنھا دیغول عام 1960 تنص على أن یتقلد مناصب الحكم في الجزائر من تثق فیھم الإدارة الفرنسیة أي تھميش جبھة التحریر الوطني وكل العاملین معھا .' },
+                { term: 'مخطط شال وموريس', definition: ') نسبة للجنرال شال و موريس ) إجراءات عسكرية شاملة تهدف للقضاء على الثورة بتكثيف العمليات العسكرية لعزل وحدات الجيش ومنع تواصلها مع غلق الحدود تونسية والمغربية بخطين ( كهرباء حراسة ألغام ) لشل تحرك الثوار ووقف الدعم عنهم' },
+                { term: 'القوة الثالثة', definition: 'طبقة برجوازية عميلة في المجتمع الجزائري دعمتها فرنسا كبديل عن الثورة و جهازها السياسي جبهة ت.و.' },
+                { term: 'سلم الشجعان', definition: 'مناورة سياسية و حرب نفسية أطلقها ديغول يوم 23 – 10 - 1958 تقضي باستسلام الثوار وتسليم أسلحتهم مقابل ضمان حريتهم و سلامتهم و قد هدف الى إفراغ الثورة من محتواها وإظهارها إلى العالم على أنها ثورة جياع .' },
+                { term: 'المخططات الإنمائية', definition: 'عبارة عن برامج تنموية اقتصادية و اجتماعية و ثقافية شاملة ترتكز على المنهج الاشتراكي أعدتها الجزائر المستقلة لتطوير الاقتصاد الوطني والخروج من حالة التخلف والتبعية للخارج منها المخطط الثلاثي و الرباعي ومشاريع كبرى مثل طريق الوحدة والسد الأخضر .' },
+                { term: 'الثورة الزراعية', definition: 'إصلاحات جذرية للدولة الجزائرية على القطاع الزراعي سنة 1972 شعارها – الأرض لمن يخدمها – للنهوض بالقطاع وتحقيق الاكتفاء تم التراجع عنها بداية من سنة 1984' }
+            ],
+            geographyTerms: [
+                { term: 'عالم الشمال', definition: 'الدول المتقدمة الواقعة في النصف الشمالي للأرض و يضم الدول الصناعية المكتفية و المصدرة للمواد الغذائية و المصنعة.' },
+                { term: 'عالم الجنوب', definition: 'الدول المتخلفة الواقعة في النصف الجنوبي للأرض غنية بالموارد الطبيعية تعاني اللازمات السياسية و التبعية الاقتصادية' },
+                { term: 'تبيض الأموال', definition: 'هي جريمة اقتصادية يتم فيها تحويل أموال غير مشروعة إلى أموال مشروعة عبر عمليات بنكيه و تجاريه' },
+                { term: 'مجموعة التبادل الحر ALENA', definition: 'اتفاقية اقتصادية التبادل الحر الشمال امريكي تضم الولايات المتحدة و كندا و المكسيك' },
+                { term: 'التنمية', definition: 'مجموع القرارات والإجراءات والمشاريع التي تهدف لتحقيق التطور الاقتصادي و الرفاه الاجتماعي عبر الاستغلال الأمثل للإمكانات .' },
+                { term: 'رؤوس الأموال', definition: 'هي الوسائل والموارد المالية الابتدائية التي تستخدم في الإنتاج او تحسينه و هي تتوفر من تراكم فائض عمل سابق .' },
+                { term: 'الاستثمار', definition: 'توظيف أموال لشراء معدات وآلات وعقارات لغرض الإنتاج و تكون مباشر بتمويلات ذاتية أو بشراكة تقوم بها الدولة.' },
+                { term: 'البنك', definition: 'هو منشأة مالية تتاجر بالنقود ولها غرض رئيسي هو العمل كوسيط بين رؤوس الأموال و بين مجالات الاستثمار' },
+                { term: 'البورصة', definition: 'هي سوق للتعامل مع الأوراق المالية عن طريق الاكتتاب و إصدار الأسهم و السندات' },
+                { term: 'السندات', definition: 'قروض يقدمها المستثمرون إلى المؤسسات والحكومات مقابل فائدة محددة و يمكن إصدار السندات لفترات تصل إلى 30عاما' },
+                { term: 'الأسهم', definition: 'ملكية في شركة ما و هي أوراق تحمل قيمة نقدية متغيرة يتم تداولها في البورصة و تحتمل ربحا او خسارة عكس السند' },
+                { term: 'العملة', definition: 'هي الشكل القانوني للنقد المتداول و تشمل الأوراق و النقود المعدنية و العملة الصعبة هي العملات القابلة للتحويل إلى الدولار' },
+                { term: 'العولمة', definition: 'عالمية السوق إنتاجا واستهلاكا عبر إزالة الحواجز أمام انتقال السلع و الخدمات و رؤوس الأموال و المعلومات و أنماط العيش و هي تمثل خطر و تحدي للدول المتخلفة ظهرت جليا غقب الحرب الباردة' },
+                { term: 'منظمة الاوبيكOPEC', definition: 'منظمة الدول المصدرة للنفط تأسست سنة1960 بهدف حماية مصالح الأعضاء و الوقوف في وجه الكارتل العالمي و تحقيق أسعار مناسبة للمحروقات تضم: العراق،السعودية،الكويت،فنزويلا،إيران،قطر،اندونيسيا ،الإمارات العربية،الجزائر،نيجيريا،ليبيا,, مقرها فيينا' },
+                { term: 'الكارتل العالمي', definition: 'اسس في 1928 من7 شركات تعرف بالشقيقات 7 (اكسن موبيل .تيكساكو .شيفرون .غولفاويل .بريتش بتروليوم . توتال )' },
+                { term: 'الشركات المتعددة الجنسيات', definition: 'هي التي ملكيتها وإدارتها تخضع لسيطرة جنسيات متعددة وتمارس نشاطها في بلاد أجنبية و تملك فروعا عبر العالم و تعرف بالشركات العابرة للقارات' },
+                { term: 'منظمة التجارة العالمية', definition: 'منظمة دولية تأسست سنة 1995 تعمل على تحرير التجارة العالمية قصد تسهيل تدفق السلع والخدمات و تتولى فض النزاعات التجارية بين الدول الأعضاء .' },
+                { term: 'صندوق النقد الدولي', definition: 'مؤسسة مالية دولية تأسست سنة 1945 مقرها واشنطن للعمل على تسير النظام النقدي الدولي و ضمان احترام قواعده و تقديم الدعم للدول التي تواجه مشاكل مالية' },
+                { term: 'البنك العالمي', definition: 'انشأ في 1946 يقدم المساعدات التقنية و القروض للدول وخاصة النامية قصد تمويل المشاريع التنموية' },
+                { term: 'اقتصاد السوق', definition: 'نظام اقتصادي يقوم على قانون السوق (العرض والطلب) وعلى المبادرة الحرة والتنافس بين المؤسسات و الشركات' },
+                { term: 'الأسواق العالمية', definition: 'وهي مناطق التبادل التجاري والتي تعرف حركة كثيفة في الاستيراد والتصدير ومختلف الأنشطة التجارية' },
+                { term: 'مجموعة السبعة', definition: 'تضم الدول السبع الاقتصادية الكبرى في العالم وهي فرنسا ألمانيا إيطاليا بريطانيا الولايات المتحدة كندا اليابان تعقد اجتماعاتها كل سنة لبحث قضايا اقتصادية، سياسية و أمنية' },
+                { term: 'مؤشر التنمية البشرية', definition: 'مقياس تأليفي تتراوح قيمته من 0 إلى 1 لقياس درجة تقدم الدول يتألف من أمل الحياة ونسبة التمدرس ومتوسط الدخل للفردي' },
+                { term: 'التكتلات الاقتصادية', definition: 'هي معاهدات اقتصادية تهدف لتوحيد السياسات الاقتصادية بين الدول او بين الشركات لتحقيق مصالحها و للسيطرة على الأسواق مثل السوق الاوروبية المشتركة' },
+                { term: 'الناتج الداخلي الخام', definition: 'قيمة ما تنتجه مختلف القطاعات الاقتصادية داخل البلد الواحد خلال سنة بالعملة الصعبة .' },
+                { term: 'متوسط الدخل الفردي', definition: 'وهو حاصل قسمة الناتج الداخلي الخام على عدد السكان وهو مقياس نسبي' },
+                { term: 'الناتج الوطني (القومي) الخام', definition: 'جملة المداخيل و القيم المضافة التي تحققها الدولة داخليا و خارجيا بالعملة الصعبة خلال سنة واحدة' },
+                { term: 'تنظيم الإقليم', definition: 'هو عبارة عن هيكلة للمظاهر الجغرافية والبشرية و الاقتصادية بوضع خطة تهدف لتوفير الاحتياجات و تأخذ بعين الاعتبار الظروف و الإمكانيات و الموارد التي يتوفر عليها الإقليم' },
+                { term: 'الهيمنة والنفوذ', definition: 'هي عملية السيطرة و الاستغلال التي تمارسها الدول القوية ذات الإمكانيات الضخمة على الدول الأضعف و على المؤسسات السياسية و المالية العالمية و تعني السيطرة و الاستحواذ على الأسواق و التحكم فيها من حيث العرض والطلب والأسعار .' },
+                { term: 'الاستقطاب', definition: 'عملية جذب وإغراء للإفراد و ألاستثمارات و الشركات نحو دولة أو منطقة أو مدينة ما بسب الفوائد والخدمات و الضمانات و الحماية الممنوحة .' },
+                { term: 'الدورة الزراعية', definition: 'هي زراعة مجموعة محاصيل بتعاقب منظم عدة سنين طبقا لنظام معين يهدف للاحتفاظ بخصوبة التربة وحماية موادها العضوية ولتنويع الإيراد الزراعي.' },
+                { term: 'النطاقات', definition: 'هو تخصيص مساحة شاسعة لإنتاج محصول واحد وهي ميزة للزراعة الأمريكية (مثل نطاق الذرة. القمح . التبغ ) وتتطلب إمكانيات طبيعية وبشرية ومادية ضخمة .' },
+                { term: 'مجمع المدن – ميقالوبوليس', definition: 'يطلق على منطقة حضرية واسعة تتميز بتلاحم عمراني و تعدد المدن استخدم لاول مرة لوصف الساحل الشمالي الشرقي للو م أ' },
+                { term: 'الاتحاد', definition: 'مصطلح يقصد به أعلى درجات التعاون والتنسيق والتكامل بين مجموعة دول في إقليم أو قارة واحدة في الميادين السياسية و الاقتصادية والاجتماعية' },
+                { term: 'التكتل', definition: 'اتحاد مجموعة دول موثق في اتفاقية له هياكل عضوية و تنظيمية موحدة يتمتع بالشخصية القانونية و له مجال جغرافي تلغى فيه كل الحواجز الجمركية بين الأعضاء' },
+                { term: 'معاهدة روما', definition: 'معاهدة موقعة في 25 مارس 1957 بروما الايطالية من قبل فرنسا .ايطاليا . ألمانيا الغربية . بلجيكا . هولندا . لوكسمبورج .' },
+                { term: 'البنلوكس', definition: 'دول البنلوكس هي اتحاد اقتصادي تأسس عام 1944 بين بلجيكا ، هولندا و لوكسمبورغ .' },
+                { term: 'ماستريخت', definition: 'هي الاتفاقية المؤسسة للاتحاد الأوروبي تم الاتفاق عليها في مدينة ماستريخت الهولندية في 10 ديسمبر 1991.و دخلت حيز التنفيذ في 1 نوفمبر 1993' },
+                { term: 'القطب الاقتصادي', definition: 'هو مركز يمثل نقطة قوة ونشاط اقتصادي كثيف لتوفره على جميع الشروط ( قاعدة . بنية تحتية . رؤوس أموال . تكنولوجيا ) التي تمكنه من إن يساهم في تفعيل الحركية الاقتصادية و ينافس أقطاب أخرى' },
+                { term: 'التنينات الأربعة', definition: 'الدول 4 التي التحقت بركب التطور الصناعي منذ 1960 ( كوريا ج –هونغ كونغ – سنغافورة – تايوان ) كنتيجة لتطبيقها النموذج الياباني ( خاصة في الصناعات الدقيقة )' },
+                { term: 'النمور', definition: 'الدول حديثة التصدير وهى ( تايلاند – ماليزيا – اندونيسيا – الفلبين ) تطورت بالاستثمارات اليابانية و الصينية' },
+                { term: 'الآسيان', definition: 'منظمة سياسية و اقتصادية 1967 تظم 10 دول من جنوب شرق أسيا بهدف صد الشيوعية وبعد نهاية الحرب الباردة تحولت إلى منظمة تبادل حر و تعاون على التنمية في المنطقة' },
+                { term: 'الوزن الديمغرافي', definition: 'هو التعداد السكاني الكبير و الذي يعتبر عامل قوة في اقتصاد منطقة إذا أحسن الاستثمار فيه و توظيف في عملية الإنتاج والتنمية' }
+            ]
         }
     };
 
@@ -185,14 +280,25 @@ document.addEventListener('DOMContentLoaded', () => {
         algerianRevolutionEvents: 'أحداث الثورة الجزائرية',
         palestineEvents: 'أحداث فلسطين',
         coldWarPersonalities: 'شخصيات الحرب الباردة',
-        algerianRevolutionPersonalities: 'شخصيات الثورة الجزائرية'
+        algerianRevolutionPersonalities: 'شخصيات الثورة الجزائرية',
+        historyTerms: 'مصطلحات التاريخ',
+        geographyTerms: 'مصطلحات الجغرافيا'
     };
 
     // --- Utility Functions ---
     function showSection(sectionId) {
+        // Remove animation class from all sections first
+        inputSection.classList.remove('animate-in');
+        quizSection.classList.remove('animate-in');
+
         inputSection.classList.add('hidden');
         quizSection.classList.add('hidden');
-        document.getElementById(sectionId).classList.remove('hidden');
+        
+        const targetSection = document.getElementById(sectionId);
+        targetSection.classList.remove('hidden');
+        
+        // Add animation class to the target section
+        targetSection.classList.add('animate-in');
     }
 
     function updateInputMessage(message, type = '') {
@@ -217,8 +323,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function normalizeText(text) {
         return text.toLowerCase().trim()
-                   .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '')
-                   .replace(/\s+/g, ' ');
+                           .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '')
+                           .replace(/\s+/g, ' ');
     }
 
     function isCloseEnough(userAnswer, correctAnswer) {
@@ -241,9 +347,11 @@ document.addEventListener('DOMContentLoaded', () => {
     function createFlashcardEntry(container, term = '', definition = '', category) {
         const entryDiv = document.createElement('div');
         entryDiv.classList.add('flashcard-entry');
+        const termPlaceholder = (category === 'events' ? 'اسم الحدث' : category === 'personalities' ? 'اسم الشخصية' : 'المصطلح');
+        const definitionPlaceholder = (category === 'events' ? 'التاريخ/الوصف' : category === 'personalities' ? 'التعريف' : 'التعريف');
         entryDiv.innerHTML = `
-            <input type="text" class="term-input" placeholder="${category === 'events' ? 'اسم الحدث' : 'اسم الشخصية'}" value="${term}">
-            <textarea class="definition-input" placeholder="${category === 'events' ? 'التاريخ/الوصف' : 'التعريف'}">${definition}</textarea>
+            <input type="text" class="term-input" placeholder="${termPlaceholder}" value="${term}">
+            <textarea class="definition-input" placeholder="${definitionPlaceholder}">${definition}</textarea>
             <button class="remove-entry-btn">X</button>
         `;
         container.appendChild(entryDiv);
@@ -279,7 +387,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function checkCanStartQuizButtons() {
-        // Here, we check if default data exists for each sub-category button
         startQuizButtons.forEach(button => {
             const category = button.dataset.category;
             const subCategory = button.dataset.subCategory;
@@ -289,16 +396,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 dataForSubCategory = defaultData.events[subCategory] || [];
             } else if (category === 'personalities') {
                 dataForSubCategory = defaultData.personalities[subCategory] || [];
+            } else if (category === 'terms') {
+                dataForSubCategory = defaultData.terms[subCategory] || [];
             }
             button.disabled = dataForSubCategory.length === 0;
         });
 
-        // This part would be for user-entered data quiz if implemented later
         const userEventsInput = collectFlashcardsFromInputs(eventInputsContainer).data;
         const userPersonalitiesInput = collectFlashcardsFromInputs(personalityInputsContainer).data;
 
-        // Message for input section: Check if any default data exists, or if user has entered data.
-        // If all default sub-categories are empty and user input is empty, show a message.
         let totalDefaultEvents = 0;
         for (const key in defaultData.events) {
             totalDefaultEvents += defaultData.events[key].length;
@@ -307,10 +413,14 @@ document.addEventListener('DOMContentLoaded', () => {
         for (const key in defaultData.personalities) {
             totalDefaultPersonalities += defaultData.personalities[key].length;
         }
+        let totalDefaultTerms = 0;
+        for (const key in defaultData.terms) {
+            totalDefaultTerms += defaultData.terms[key].length;
+        }
 
-        if (userEventsInput.length === 0 && userPersonalitiesInput.length === 0 && 
-            totalDefaultEvents === 0 && totalDefaultPersonalities === 0) {
-             updateInputMessage('الرجاء إضافة بيانات كاملة في أحد الأقسام على الأقل.', 'error');
+        if (userEventsInput.length === 0 && userPersonalitiesInput.length === 0 &&
+            totalDefaultEvents === 0 && totalDefaultPersonalities === 0 && totalDefaultTerms === 0) {
+                updateInputMessage('الرجاء إضافة بيانات كاملة في أحد الأقسام على الأقل.', 'error');
         } else {
             updateInputMessage('');
         }
@@ -323,12 +433,11 @@ document.addEventListener('DOMContentLoaded', () => {
         currentQuizSubCategoryKey = subCategory;
         currentQuizCategoryLabel = subCategoryLabels[subCategory] || 'نوع غير معروف';
 
-        // Get the specific flashcards for the selected sub-category from default data
         currentQuizFlashcards = defaultData[mainCategory][subCategory] || [];
         
         if (currentQuizFlashcards.length === 0) {
             updateInputMessage(`لا توجد بيانات متاحة لـ "${currentQuizCategoryLabel}". الرجاء إضافة بيانات أو اختيار فئة أخرى.`, 'error');
-            showSection('input-section'); // Return to input section if no data
+            showSection('input-section');
             return;
         }
 
@@ -339,24 +448,37 @@ document.addEventListener('DOMContentLoaded', () => {
         correctAnswerDisplay.classList.add('hidden');
         nextQuestionBtn.classList.add('hidden');
         restartQuizBtn.classList.add('hidden');
-        backToInputBtn.classList.add('hidden');
-        helpButton.disabled = false; // Enable help button for new quiz
+        helpButton.disabled = false;
 
         quizCategoryDisplay.textContent = currentQuizCategoryLabel;
 
         quizQuestions = [];
         currentQuizFlashcards.forEach(card => {
-            quizQuestions.push({ 
-                type: 'termToDefinition', 
-                question: card.term, 
-                answer: card.definition, 
-                questionPrompt: mainCategory === 'events' ? 'ما هو التاريخ/الوصف؟' : 'ما هو التعريف؟' 
+            let termQuestionPrompt;
+            let definitionQuestionPrompt;
+
+            if (mainCategory === 'events') {
+                termQuestionPrompt = 'ما هو التاريخ/الوصف؟';
+                definitionQuestionPrompt = 'ما هو اسم الحدث؟';
+            } else if (mainCategory === 'personalities') {
+                termQuestionPrompt = 'ما هو التعريف؟';
+                definitionQuestionPrompt = 'ما هو اسم الشخصية؟';
+            } else if (mainCategory === 'terms') {
+                termQuestionPrompt = 'ما هو تعريف المصطلح؟';
+                definitionQuestionPrompt = 'ما هو المصطلح؟';
+            }
+
+            quizQuestions.push({
+                type: 'termToDefinition',
+                question: card.term,
+                answer: card.definition,
+                questionPrompt: termQuestionPrompt
             });
-            quizQuestions.push({ 
-                type: 'definitionToTerm', 
-                question: card.definition, 
-                answer: card.term, 
-                questionPrompt: mainCategory === 'events' ? 'ما هو اسم الحدث؟' : 'ما هو اسم الشخصية؟' 
+            quizQuestions.push({
+                type: 'definitionToTerm',
+                question: card.definition,
+                answer: card.term,
+                questionPrompt: definitionQuestionPrompt
             });
         });
         quizQuestions = shuffleArray(quizQuestions);
@@ -383,7 +505,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         helpUsedThisQuestion = false;
         helpButton.disabled = false;
-        generateChoices(currentQ.answer, currentQ.type); // Pass question type for intelligent distractors
+        generateChoices(currentQ.answer, currentQ.type);
     }
 
     function generateChoices(correctAnswer, questionType) {
@@ -391,29 +513,24 @@ document.addEventListener('DOMContentLoaded', () => {
         currentChoices = [];
 
         let distractorsPool = [];
-        // Determine the type of answers to collect for distractors based on the questionType
-        if (questionType === 'termToDefinition') { // Question is Term, Answer is Definition (e.g., Personality Name -> Personality Definition)
-            // Collect all definitions from the current main category's sub-categories
+        if (questionType === 'termToDefinition') {
             distractorsPool = Object.values(defaultData[currentMainCategoryKey])
-                                .flat()
-                                .map(card => card.definition);
-        } else { // Question is Definition, Answer is Term (e.g., Personality Definition -> Personality Name)
-            // Collect all terms from the current main category's sub-categories
+                                 .flat()
+                                 .map(card => card.definition);
+        } else {
             distractorsPool = Object.values(defaultData[currentMainCategoryKey])
-                                .flat()
-                                .map(card => card.term);
+                                 .flat()
+                                 .map(card => card.term);
         }
         
         const uniqueDistractors = [...new Set(distractorsPool)];
 
         let options = [correctAnswer];
 
-        // Add 2 distractor answers
         while (options.length < 3) {
             const randomIndex = Math.floor(Math.random() * uniqueDistractors.length);
             const potentialDistractor = uniqueDistractors[randomIndex];
 
-            // Ensure the distractor is not the correct answer and not already in options
             if (!isCloseEnough(potentialDistractor, correctAnswer) && !options.some(opt => isCloseEnough(opt, potentialDistractor))) {
                 options.push(potentialDistractor);
             }
@@ -505,21 +622,30 @@ document.addEventListener('DOMContentLoaded', () => {
     addEntryButtons.forEach(button => {
         button.addEventListener('click', (event) => {
             const category = event.target.dataset.category;
-            const container = category === 'events' ? eventInputsContainer : personalityInputsContainer;
-            createFlashcardEntry(container, '', '', category);
+            let container;
+            if (category === 'events') {
+                container = eventInputsContainer;
+            } else if (category === 'personalities') {
+                container = personalityInputsContainer;
+            } 
+            // else if (category === 'terms') { // إذا أردت تفعيل إضافة المصطلحات يدويا
+            //     container = document.getElementById('terms-inputs');
+            // }
+            if (container) { // تأكد من أن الحاوية موجودة قبل إضافة العنصر
+                createFlashcardEntry(container, '', '', category);
+            }
         });
     });
 
     startQuizButtons.forEach(button => {
         button.addEventListener('click', (event) => {
             const category = event.target.dataset.category;
-            const subCategory = event.target.dataset.subCategory; // Get the specific sub-category
-            startQuiz(category, subCategory); // Pass both main and sub-category
+            const subCategory = event.target.dataset.subCategory;
+            startQuiz(category, subCategory);
         });
     });
 
     nextQuestionBtn.addEventListener('click', nextQuestion);
-    // Restart uses the last selected sub-category
     restartQuizBtn.addEventListener('click', () => startQuiz(currentMainCategoryKey, currentQuizSubCategoryKey));
     backToInputBtn.addEventListener('click', () => {
         showSection('input-section');
@@ -529,6 +655,8 @@ document.addEventListener('DOMContentLoaded', () => {
         questionCountDisplay.textContent = '0';
         totalQuestionsDisplay.textContent = '0';
         quizCategoryDisplay.textContent = '';
+        helpButton.classList.remove('hidden');
+        choiceButtonsContainer.classList.remove('hidden');
     });
 
     helpButton.addEventListener('click', useHelp);
@@ -537,22 +665,30 @@ document.addEventListener('DOMContentLoaded', () => {
     function loadDefaultFlashcardsToInputs() {
         eventInputsContainer.innerHTML = '';
         personalityInputsContainer.innerHTML = '';
-
-        // Load all default events into the main events input container
-        for (const key in defaultData.events) {
-            defaultData.events[key].forEach(card => {
-                createFlashcardEntry(eventInputsContainer, card.term, card.definition, 'events');
-            });
-        }
-        // Load all default personalities into the main personalities input container
-        for (const key in defaultData.personalities) {
-            defaultData.personalities[key].forEach(card => {
-                createFlashcardEntry(personalityInputsContainer, card.term, card.definition, 'personalities');
-            });
-        }
+        // لا نقوم بملء حقول الإدخال الافتراضية هنا لتجنب تكرار البيانات على الواجهة
+        // إذا أردت عرض البيانات الافتراضية في حقول الإدخال، قم بإلغاء تعليق الأسطر التالية:
+        // for (const key in defaultData.events) {
+        //     defaultData.events[key].forEach(card => {
+        //         createFlashcardEntry(eventInputsContainer, card.term, card.definition, 'events');
+        //     });
+        // }
+        // for (const key in defaultData.personalities) {
+        //     defaultData.personalities[key].forEach(card => {
+        //         createFlashcardEntry(personalityInputsContainer, card.term, card.definition, 'personalities');
+        //     });
+        // }
+        // إذا أردت أيضاً عرض المصطلحات في حقول إدخال خاصة بها، ستحتاج لإنشاء terms-inputs div وربطها هنا:
+        // const termsInputsContainer = document.getElementById('terms-inputs');
+        // if (termsInputsContainer) {
+        //     for (const key in defaultData.terms) {
+        //         defaultData.terms[key].forEach(card => {
+        //             createFlashcardEntry(termsInputsContainer, card.term, card.definition, 'terms');
+        //         });
+        //     }
+        // }
     }
 
-    loadDefaultFlashcardsToInputs(); // Load default data on page load
-    checkCanStartQuizButtons(); // Check initial state of quiz buttons
-    showSection('input-section'); // Show input section on load
+    loadDefaultFlashcardsToInputs();
+    checkCanStartQuizButtons();
+    showSection('input-section');
 });
