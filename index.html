@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>إتقان المذكرات - أحداث وشخصيات مفصلة</title>
+    <title>إتقان المذكرات - أحداث وشخصيات ومصطلحات مفصلة</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=IBM+Plex+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -29,8 +29,7 @@
                 </div>
                 <div id="event-inputs" class="flashcard-category-inputs custom-scrollbar">
                     </div>
-                <button class="action-btn add-entry-btn" data-category="events">أضف حدثاً جديداً</button>
-            </div>
+                </div>
 
             <div class="category-section">
                 <h3 class="category-title">الشخصيات</h3>
@@ -40,8 +39,15 @@
                 </div>
                 <div id="personality-inputs" class="flashcard-category-inputs custom-scrollbar">
                     </div>
-                <button class="action-btn add-entry-btn" data-category="personalities">أضف شخصية جديدة</button>
-            </div>
+                </div>
+
+            <div class="category-section">
+                <h3 class="category-title">المصطلحات</h3>
+                <div class="sub-category-buttons">
+                    <button class="action-btn primary-btn start-category-quiz-btn" data-category="terms" data-sub-category="historyTerms">بدء اختبار مصطلحات التاريخ</button>
+                    <button class="action-btn primary-btn start-category-quiz-btn" data-category="terms" data-sub-category="geographyTerms">بدء اختبار مصطلحات الجغرافيا</button>
+                </div>
+                </div>
 
             <p id="input-message" class="message"></p>
         </div>
@@ -60,7 +66,7 @@
 
             <div class="answer-area">
                 <div id="choice-buttons-container" class="choice-buttons-container">
-                    </div>
+                </div>
                 <button id="help-button" class="action-btn help-btn">المساعدة (إزالة خيار)</button>
             </div>
 
@@ -69,7 +75,7 @@
                 <p id="correct-answer-display" class="correct-info hidden"></p>
                 <button id="next-question-btn" class="action-btn hidden">السؤال التالي</button>
                 <button id="restart-quiz-btn" class="action-btn hidden">إعادة الاختبار</button>
-                <button id="back-to-input-btn" class="action-btn hidden">العودة للإدخال</button>
+                <button id="back-to-input-btn" class="action-btn">العودة للإدخال</button>
             </div>
         </div>
     </div>
