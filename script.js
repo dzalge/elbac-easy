@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ]
         },
         terms: {
-            historyTerms: [
+            coldWarTerms: [
                 { term: 'العالم الثالث', definition: 'مصطلح ظهر في1952 اطلقه الفرنسي ألفريد صوفي للتمييز بينه وبين العالم الرأسمالي و الاشتراكي و يضم دول أسيا وإفريقيا وأمريكا اللاتينية' },
                 { term: 'الراسمالية', definition: 'مذهب اقتصادي غربي يرتكز على مبدأ الحرية الفردية ويستبعد أي تدخل للدولة في الشؤون الاقتصادية.' },
                 { term: 'الاشتراكية', definition: 'نظام اقتصادي يقوم على مبدا الملكية الجماعية وهيمنة الدولة على مناحي الحياة وهو مناهض للرأسمالية تبناها الا .س  بعد نجاح الثورة البلشفية 1917' },
@@ -209,6 +209,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 { term: 'الشرعية الدولية', definition: 'يقصد بها الالتزام و تنفيذ القرارات الصادرة عن الهيئات الدولية كالأمم المتحدة وأجهزتها . ما يخدم مصالح الو م أ و حلفائها .' },
                 { term: 'النظام الدولي الجديد', definition: 'مفهوم برز بعد لقاء مالطا1989 و انهيار المعسكر الشيوعي يقوم على أساس توسيع مفاهيم العولمة و الليبرالية و فرض منطق الهيمنة الأمريكية على العالم .' },
                 { term: 'المنظمات غير الحكومية', definition: 'هي منظمات خيرية عالمية تعرف بالمجتمع المدني موظفوها متطوعون تنشط في كافة الميادين كالبيئة . حقوق الإنسان . الإغاثة . الرعاية الصحية و الطفولة' },
+            ],
+            algerianRevolutionTerms: [
                 { term: 'الثورة التحريرية', definition: 'و هي فعل تحرري شامل ورد شعبي عنيف بهدف للسيادة والاستقلال من خلال العمليات العسكرية والسياسية لجيش و جبهة التحرير الوطني' },
                 { term: 'النشاط المسلح', definition: 'هي مجموع العمليات العسكرية و الفدائية التي قام بها الثوار الجزائريون داخل وخارج الجزائر في الفترة الممتدة بين 1954/1962 والتي انتهت بتحقيق الاستقلال .' },
                 { term: 'سياسة الإغراء', definition: 'سياسة الترغيب بواسطة المشاريع الاقتصادية و الاجتماعية التي أقرتها فرنسا في الجزائر بهدف تمزيق و السيطرة على مجتمعها و كسب عملاء .' },
@@ -271,18 +273,188 @@ document.addEventListener('DOMContentLoaded', () => {
                 { term: 'الآسيان', definition: 'منظمة سياسية و اقتصادية 1967 تظم 10 دول من جنوب شرق أسيا بهدف صد الشيوعية وبعد نهاية الحرب الباردة تحولت إلى منظمة تبادل حر و تعاون على التنمية في المنطقة' },
                 { term: 'الوزن الديمغرافي', definition: 'هو التعداد السكاني الكبير و الذي يعتبر عامل قوة في اقتصاد منطقة إذا أحسن الاستثمار فيه و توظيف في عملية الإنتاج والتنمية' }
             ]
+        },
+        // قسم الفلسفة الجديد
+        philosophy: {
+            hypothesis: [ // قسم فرعي اسمه الفرضية
+                {
+                    term: 'ماجندي مع من ؟',
+                    answer: 'الحسيون',
+                    wrongAnswerType: 'المواقف',
+                    questionPrompt: 'ما هو موقف ماجندي؟'
+                },
+                {
+                    term: 'قول ماجندي لتلميذه كلود برنارد ؟',
+                    answer: 'أترك عبائتك و خيالك عند باب المخبر',
+                    wrongAnswerType: 'الأقوال',
+                    questionPrompt: 'ماذا قال ماجندي؟'
+                },
+                {
+                    term: 'جون ستوارت مل مع من ؟',
+                    answer: 'الحسيون',
+                    wrongAnswerType: 'المواقف',
+                    questionPrompt: 'ما هو موقف جون ستوارت مل؟'
+                },
+                {
+                    term: 'ماذا تعني طريقة التلازم في الحضور',
+                    answer: 'بمعنى "التلازم في الحضور": وجود الظاهرة (المعلول) يتلازم دائمًا مع وجود العامل (العلة) في كل الحالات.',
+                    wrongAnswerType: 'أخرى', // سيتم سحبها عشوائياً من إجابات أسئلة الفرضية الأخرى
+                    questionPrompt: 'وضح المصطلح التالي:'
+                },
+                {
+                    term: 'اعط واحد من الحسيون',
+                    answer: 'الحسيونFlas', // علامة للتعامل الخاص: سنختار فيلسوفاً عشوائياً من الـ pool
+                    wrongAnswerType: 'الفلاسفة',
+                    correctAnswerPool: ['ماجندي', 'جون ستوارت مل', 'فرنسيس بيكون'], // قائمة الفلاسفة الحسيون
+                    questionPrompt: 'من هو أحد فلاسفة الحسيون؟'
+                },
+                {
+                    term: 'لمن يوجه هذا النقد : نحن لا ننكر ان الفرضية تؤدي الى تدخل ذاتية العالم لكن اصحاب الأطروحة هذا ينكرون اي مبادرة للعقل',
+                    answer: 'الحسيون',
+                    wrongAnswerType: 'المواقف',
+                    questionPrompt: 'لمن يوجه هذا النقد؟'
+                },
+                {
+                    term: 'من قال : إن الملاحظة تغنينا عن سائر الفروض',
+                    answer: 'ماجندي',
+                    wrongAnswerType: 'الفلاسفة',
+                    questionPrompt: 'من قائل العبارة؟'
+                },
+                {
+                    term: 'من قال : إن الفرضية قفزة نحو المجهول و طريق نحو التخمين , و لهاذا يجب علينا ان نتجاوز هذا العائق و ننتقل مباشرة من الملاحظة نحو التجربة',
+                    answer: 'جون ستوارت مل',
+                    wrongAnswerType: 'الفلاسفة',
+                    questionPrompt: 'من قائل العبارة؟'
+                },
+                {
+                    term: 'الى من توجه النقد الأتي : طريقة التلازم في الحضور لا تصدق إلا على الظواهر التي تكون معروفة السبب سابقا فلا يمكن الإعتماد عليها إذا تعلق الأمر بظواهر جديدة',
+                    answer: 'الحسيون',
+                    wrongAnswerType: 'المواقف',
+                    questionPrompt: 'لمن يوجه هذا النقد؟'
+                },
+                {
+                    term: 'من قال : إن الطبيعة كتاب مفتوح, و لإدراك قوانينها م عليك إلا ان تطلق العنان لحواسك أما عقلك فلا',
+                    answer: 'جون ستوارت مل',
+                    wrongAnswerType: 'الفلاسفة',
+                    questionPrompt: 'من قائل العبارة؟'
+                },
+                {
+                    term: 'في اي موقف تكتب : العقل ليس له اي دور فعال في بناء المعرفة العلمية',
+                    answer: 'الحسيون',
+                    wrongAnswerType: 'المواقف',
+                    questionPrompt: 'إلى أي موقف تنتمي هذه الفكرة؟'
+                },
+                {
+                    term: 'في اي موقف تكتب : لا يمكن قيام العلم بدون فرضيات',
+                    answer: 'العقليون',
+                    wrongAnswerType: 'المواقف',
+                    questionPrompt: 'إلى أي موقف تنتمي هذه الفكرة؟'
+                },
+                {
+                    term: 'ماذا قال كلود برنارد ؟',
+                    answer: 'توحي الملاحظة بالفكرة و الفكرة تقود الى التجربة و التجربة تحكم بدورها على الفكرة',
+                    wrongAnswerType: 'الأقوال',
+                    questionPrompt: 'اذكر قول كلود برنارد.'
+                },
+                {
+                    term: 'الى اي موقف ينتمي كلود برنارد ؟',
+                    answer: 'العقليون',
+                    wrongAnswerType: 'المواقف',
+                    questionPrompt: 'حدد الموقف الذي ينتمي إليه كلود برنارد.'
+                },
+                {
+                    term: 'اين توظف هذه الفكرة : العالم فرانسوا هوبير الأعمى كان العقل المدبر لكنه كان يستعير حواس غيره',
+                    answer: 'العقليون',
+                    wrongAnswerType: 'المواقف',
+                    questionPrompt: 'أين توظف هذه الفكرة؟'
+                },
+                {
+                    term: 'بوان كاريه مع من ؟',
+                    answer: 'العقليون',
+                    wrongAnswerType: 'المواقف',
+                    questionPrompt: 'ما هو موقف بوان كاريه؟'
+                },
+                {
+                    term: 'اين توظف المثال الأتي : باستور ربط ظاهرة التعفن رغم عدم رؤيته لها و معنى هذه ان الفرضية امر ضروري',
+                    answer: 'العقليون',
+                    wrongAnswerType: 'المواقف',
+                    questionPrompt: 'أين توظف هذا المثال؟'
+                },
+                {
+                    term: 'اين توظف المثال الأتي : نيوتن ربط ظاهرة سقوط الأجسام بوجود الجاذبية رغم عدم رؤيته لها',
+                    answer: 'العقليون',
+                    wrongAnswerType: 'المواقف',
+                    questionPrompt: 'أين توظف هذا المثال؟'
+                },
+                {
+                    term: 'ابن الهيثم مع من ؟',
+                    answer: 'العقليون',
+                    wrongAnswerType: 'المواقف',
+                    questionPrompt: 'ما هو موقف ابن الهيثم؟'
+                },
+                {
+                    term: 'من قال " إنني لا أصل الى الحق إلا من أراء تكون عناصرها امور حسية و صورتها عقلية',
+                    answer: 'ابن الهيثم',
+                    wrongAnswerType: 'الفلاسفة',
+                    questionPrompt: 'من قائل العبارة؟'
+                },
+                {
+                    term: 'من قال : التجريب دون فكرة سابقة غير ممكن لأنه سيجعل كل تجربة عقيمة ذلط لأن الملاحظة الخالصة و التجربة الساذجة لا تكفيان لبناء العلم',
+                    answer: 'بوان كاريه',
+                    wrongAnswerType: 'الفلاسفة',
+                    questionPrompt: 'من قائل العبارة؟'
+                },
+                {
+                    term: 'اين تكتب العبارة : الفكرة التي يسترشد بها الباحث في عمله تكون من بناء العقل و ليس بتأثير الأشياء التي لاحظناها',
+                    answer: 'العقليون',
+                    wrongAnswerType: 'المواقف',
+                    questionPrompt: 'إلى أي موقف تنتمي هذه العبارة؟'
+                },
+                {
+                    term: 'لمن توجه النقد الأتي : .....السماح بدخول الفرضية في المنهج التجريبي لا يعني السماح بتدخل الأهواء و الميولات و التفسيرات الخرافية',
+                    answer: 'العقليون',
+                    wrongAnswerType: 'المواقف',
+                    questionPrompt: 'لمن يوجه هذا النقد؟'
+                },
+                {
+                    term: 'الى من توجه النقد التالي : ...لعل هذا الأمر هو ما أدى الى تأخر العلم (قصد تدخل الأهواء) و إنطلاقته على اسس علمية تجريبية',
+                    answer: 'العقليون',
+                    wrongAnswerType: 'المواقف',
+                    questionPrompt: 'لمن يوجه هذا النقد؟'
+                },
+            ],
+            // قوائم الموارد للمشتتات
+            resources: {
+                الفلاسفة: [
+                    'جون ستوارت مل', 'ابن الهيثم', 'بوان كاريه', 'كلود برنارد', 'باستور', 'ماجندي', 'فرنسيس بيكون'
+                ],
+                المواقف: [
+                    'العقليون', 'الحسيون', 'تخيليون'
+                ],
+                الأقوال: [
+                    'توحي الملاحظة بالفكرة و الفكرة تقود الى التجربة و التجربة تحكم بدورها على الفكرة',
+                    'إنني لا أصل الى الحق إلا من أراء تكون عناصرها امور حسية و صورتها عقلية',
+                    'إن الطبيعة كتاب مفتوح, و لإدراك قوانينها م عليك إلا ان تطلق العنان لحواسك أما عقلك فلا',
+                    'إن الفرضية قفزة نحو المجهول و طريق نحو التخمين , و لهاذا يجب علينا ان نتجاوز هذا العائق و ننتقل مباشرة من الملاحظة نحو التجربة',
+                    'أترك عبائتك و خيالك عند باب المخبر',
+                    'العقل البشري يميل بطبيعته إلى افتراض نظام وانتظام في الأشياء أكثر مما يجده',
+                    'التجريب دون فكرة سابقة غير ممكن لأنه سيجعل كل تجربة عقيمة ذلط لأن الملاحظة الخالصة و التجربة الساذجة لا تكفيان لبناء العلم'
+                ]
+            }
         }
     };
 
-    // Mapping for displaying sub-category names in the quiz info panel
+    // تحديث subCategoryLabels
     const subCategoryLabels = {
         coldWarEvents: 'أحداث الحرب الباردة',
         algerianRevolutionEvents: 'أحداث الثورة الجزائرية',
         palestineEvents: 'أحداث فلسطين',
         coldWarPersonalities: 'شخصيات الحرب الباردة',
         algerianRevolutionPersonalities: 'شخصيات الثورة الجزائرية',
-        historyTerms: 'مصطلحات التاريخ',
-        geographyTerms: 'مصطلحات الجغرافيا'
+        coldWarTerms: 'مصطلحات الحرب الباردة',
+        algerianRevolutionTerms: 'مصطلحات الثورة الجزائرية',
+        geographyTerms: 'مصطلحات الجغرافيا',
+        hypothesis: 'الفرضية في الفلسفة' // تسمية قسم الفرضية
     };
 
     // --- Utility Functions ---
@@ -323,7 +495,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function normalizeText(text) {
         return text.toLowerCase().trim()
-                           .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '')
+                           .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()؟:!]/g, '')
                            .replace(/\s+/g, ' ');
     }
 
@@ -334,17 +506,19 @@ document.addEventListener('DOMContentLoaded', () => {
         if (normalizedUser === normalizedCorrect) {
             return true;
         }
-        if (normalizedCorrect.includes(normalizedUser) && normalizedUser.length > normalizedCorrect.length * 0.5) {
+        // يمكن تعديل هذه القيم حسب مدى التسامح المطلوب في المطابقة الجزئية
+        if (normalizedCorrect.includes(normalizedUser) && normalizedUser.length > normalizedCorrect.length * 0.6) {
              return true;
         }
-        if (normalizedUser.includes(normalizedCorrect) && normalizedCorrect.length > normalizedUser.length * 0.5) {
+        if (normalizedUser.includes(normalizedCorrect) && normalizedCorrect.length > normalizedUser.length * 0.6) {
             return true;
         }
         return false;
     }
 
-    // --- Input Section Logic ---
+    // --- Input Section Logic (غير مستخدم لإضافة بيانات الفلسفة يدوياً حالياً) ---
     function createFlashcardEntry(container, term = '', definition = '', category) {
+        // هذا الجزء يستخدم فقط إذا قررت تفعيل إضافة البيانات يدوياً
         const entryDiv = document.createElement('div');
         entryDiv.classList.add('flashcard-entry');
         const termPlaceholder = (category === 'events' ? 'اسم الحدث' : category === 'personalities' ? 'اسم الشخصية' : 'المصطلح');
@@ -369,6 +543,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function collectFlashcardsFromInputs(container) {
+        // هذا الجزء يستخدم فقط إذا قررت تفعيل إضافة البيانات يدوياً
         const currentFlashcards = [];
         const entries = container.querySelectorAll('.flashcard-entry');
         let hasEmptyField = false;
@@ -398,29 +573,30 @@ document.addEventListener('DOMContentLoaded', () => {
                 dataForSubCategory = defaultData.personalities[subCategory] || [];
             } else if (category === 'terms') {
                 dataForSubCategory = defaultData.terms[subCategory] || [];
+            } else if (category === 'philosophy') { // التحقق من بيانات الفلسفة
+                dataForSubCategory = defaultData.philosophy[subCategory] || [];
             }
             button.disabled = dataForSubCategory.length === 0;
         });
 
-        const userEventsInput = collectFlashcardsFromInputs(eventInputsContainer).data;
-        const userPersonalitiesInput = collectFlashcardsFromInputs(personalityInputsContainer).data;
-
+        // هذا الجزء يفترض أنك قد تسمح للمستخدم بإضافة بيانات يدوية مستقبلاً، لذا نتحقق من وجود بيانات افتراضية على الأقل
         let totalDefaultEvents = 0;
-        for (const key in defaultData.events) {
-            totalDefaultEvents += defaultData.events[key].length;
-        }
+        for (const key in defaultData.events) { totalDefaultEvents += defaultData.events[key].length; }
         let totalDefaultPersonalities = 0;
-        for (const key in defaultData.personalities) {
-            totalDefaultPersonalities += defaultData.personalities[key].length;
-        }
+        for (const key in defaultData.personalities) { totalDefaultPersonalities += defaultData.personalities[key].length; }
         let totalDefaultTerms = 0;
-        for (const key in defaultData.terms) {
-            totalDefaultTerms += defaultData.terms[key].length;
+        for (const key in defaultData.terms) { totalDefaultTerms += defaultData.terms[key].length; }
+        let totalDefaultPhilosophy = 0; // لعد بيانات الفلسفة
+        for (const key in defaultData.philosophy) {
+            // نتأكد أن المفتاح ليس 'resources'
+            if (key !== 'resources') {
+                totalDefaultPhilosophy += defaultData.philosophy[key].length;
+            }
         }
 
-        if (userEventsInput.length === 0 && userPersonalitiesInput.length === 0 &&
-            totalDefaultEvents === 0 && totalDefaultPersonalities === 0 && totalDefaultTerms === 0) {
-                updateInputMessage('الرجاء إضافة بيانات كاملة في أحد الأقسام على الأقل.', 'error');
+
+        if (totalDefaultEvents === 0 && totalDefaultPersonalities === 0 && totalDefaultTerms === 0 && totalDefaultPhilosophy === 0) {
+                updateInputMessage('الرجاء إضافة بيانات كاملة في أحد الأقسام على الأقل لبدء الاختبارات.', 'error');
         } else {
             updateInputMessage('');
         }
@@ -466,20 +642,38 @@ document.addEventListener('DOMContentLoaded', () => {
             } else if (mainCategory === 'terms') {
                 termQuestionPrompt = 'ما هو تعريف المصطلح؟';
                 definitionQuestionPrompt = 'ما هو المصطلح؟';
+            } else if (mainCategory === 'philosophy') {
+                 // استخدام questionPrompt المعرفة في الكارد مباشرةً
+                termQuestionPrompt = card.questionPrompt;
+                definitionQuestionPrompt = card.questionPrompt; // هنا قد تحتاج لتحديد هل سؤال الفلسفة له وجهان أم واحد
             }
 
-            quizQuestions.push({
-                type: 'termToDefinition',
-                question: card.term,
-                answer: card.definition,
-                questionPrompt: termQuestionPrompt
-            });
-            quizQuestions.push({
-                type: 'definitionToTerm',
-                question: card.definition,
-                answer: card.term,
-                questionPrompt: definitionQuestionPrompt
-            });
+            // بالنسبة لأسئلة الفلسفة، السؤال مححدد في "term" والجواب في "answer"
+            // لذا نستخدم نوع واحد من الأسئلة هنا فقط: termToDefinition
+            if (mainCategory === 'philosophy') {
+                quizQuestions.push({
+                    type: 'termToDefinition', // نستخدم هذا النوع بشكل عام لأسئلة الفلسفة
+                    question: card.term,
+                    answer: card.answer,
+                    questionPrompt: card.questionPrompt, // استخدام الـ questionPrompt المحدد في الكارد
+                    wrongAnswerType: card.wrongAnswerType, // تمرير نوع المشتتات
+                    correctAnswerPool: card.correctAnswerPool // تمرير pool الإجابات الصحيحة إذا وجد
+                });
+            } else {
+                // المنطق الأصلي للأحداث والشخصيات والمصطلحات
+                quizQuestions.push({
+                    type: 'termToDefinition',
+                    question: card.term,
+                    answer: card.definition,
+                    questionPrompt: termQuestionPrompt
+                });
+                quizQuestions.push({
+                    type: 'definitionToTerm',
+                    question: card.definition,
+                    answer: card.term,
+                    questionPrompt: definitionQuestionPrompt
+                });
+            }
         });
         quizQuestions = shuffleArray(quizQuestions);
 
@@ -505,38 +699,117 @@ document.addEventListener('DOMContentLoaded', () => {
         
         helpUsedThisQuestion = false;
         helpButton.disabled = false;
-        generateChoices(currentQ.answer, currentQ.type);
+        generateChoices(currentQ); // نمرر الكارد بأكمله لـ generateChoices
     }
 
-    function generateChoices(correctAnswer, questionType) {
+    // تم تعديل الدالة لاستقبال الكارد الحالي بدلاً من الإجابة الصحيحة ونوع السؤال فقط
+    function generateChoices(currentQuestionCard) {
         choiceButtonsContainer.innerHTML = '';
         currentChoices = [];
 
-        let distractorsPool = [];
-        if (questionType === 'termToDefinition') {
-            distractorsPool = Object.values(defaultData[currentMainCategoryKey])
-                                 .flat()
-                                 .map(card => card.definition);
+        let correctAnswer = currentQuestionCard.answer; // الإجابة الصحيحة الأولية من الكارد
+        let potentialDistractorsPool = [];
+        let specificWrongAnswerType = null; // لتخزين نوع المشتتات المطلوب
+
+        // **الجزء المحسن للتعامل مع أسئلة الفلسفة وأنواع المشتتات**
+        if (currentMainCategoryKey === 'philosophy') {
+            specificWrongAnswerType = currentQuestionCard.wrongAnswerType;
+
+            // التعامل الخاص بسؤال "اعط واحد من الحسيون"
+            if (currentQuestionCard.answer === 'الحسيونFlas' && currentQuestionCard.correctAnswerPool) {
+                // الإجابة الصحيحة هي فيلسوف عشوائي من pool محدد
+                correctAnswer = shuffleArray([...currentQuestionCard.correctAnswerPool])[0];
+                // المشتتات تكون من قائمة الفلاسفة العامة
+                potentialDistractorsPool = defaultData.philosophy.resources['الفلاسفة'];
+            } else if (specificWrongAnswerType === 'أخرى') {
+                // اختر عشوائيا من إجابات الأسئلة الأخرى في نفس قسم الفرضية
+                // هنا قد يكون "أخرى" يعني أي إجابة أخرى، لكن يجب أن تكون من إجابات (تعريفات أو مواقف أو أقوال)
+                // لذلك، نجمع الأجوبة الفعلية من الكروت الأخرى
+                potentialDistractorsPool = currentQuizFlashcards.map(card => card.answer);
+            } else if (specificWrongAnswerType && defaultData.philosophy.resources[specificWrongAnswerType]) {
+                // اختر من القائمة المحددة (الفلاسفة، المواقف، الأقوال)
+                potentialDistractorsPool = defaultData.philosophy.resources[specificWrongAnswerType];
+            } else {
+                // Fallback for philosophy if wrongAnswerType is invalid or not found
+                // في هذه الحالة، نجمع كل الأقوال والفلاسفة والمواقف كخيارات افتراضية عامة للفلسفة
+                potentialDistractorsPool = [
+                    ...defaultData.philosophy.resources['الفلاسفة'],
+                    ...defaultData.philosophy.resources['المواقف'],
+                    ...defaultData.philosophy.resources['الأقوال']
+                ];
+            }
         } else {
-            distractorsPool = Object.values(defaultData[currentMainCategoryKey])
-                                 .flat()
-                                 .map(card => card.term);
+            // المنطق الأصلي للأحداث والشخصيات والمصطلحات
+            // هنا، نوع المشتتات يتبع نوع الإجابة الصحيحة: إذا كان السؤال مصطلح، الإجابة تاريخ/وصف، والمشتتات تواريخ/وصف
+            // إذا كان السؤال تاريخ/وصف، الإجابة مصطلح، والمشتتات مصطلحات
+            const allDefinitions = Object.values(defaultData[currentMainCategoryKey]).flat().map(card => card.definition);
+            const allTerms = Object.values(defaultData[currentMainCategoryKey]).flat().map(card => card.term);
+            
+            if (currentQuestionCard.type === 'termToDefinition') {
+                potentialDistractorsPool = allDefinitions; // المشتتات هي تواريخ/تعريفات
+            } else { // definitionToTerm
+                potentialDistractorsPool = allTerms; // المشتتات هي مصطلحات/أسماء
+            }
         }
         
-        const uniqueDistractors = [...new Set(distractorsPool)];
+        // تصفية المشتتات: يجب ألا تكون الإجابة الصحيحة ولا تكرر نفسها
+        let uniqueDistractors = [...new Set(potentialDistractorsPool)].filter(d => 
+            d && !isCloseEnough(d, correctAnswer) // يجب أن تكون قيمة موجودة ولا تتطابق مع الإجابة الصحيحة
+        );
 
-        let options = [correctAnswer];
+        uniqueDistractors = shuffleArray(uniqueDistractors); // خلط المشتتات الفريدة
 
-        while (options.length < 3) {
-            const randomIndex = Math.floor(Math.random() * uniqueDistractors.length);
-            const potentialDistractor = uniqueDistractors[randomIndex];
+        let options = [correctAnswer]; // نبدأ بالإجابة الصحيحة
 
-            if (!isCloseEnough(potentialDistractor, correctAnswer) && !options.some(opt => isCloseEnough(opt, potentialDistractor))) {
+        // نختار 2 من المشتتات الفريدة المتاحة
+        for (let i = 0; options.length < 3 && i < uniqueDistractors.length; i++) {
+            const potentialDistractor = uniqueDistractors[i];
+            if (!options.some(opt => isCloseEnough(opt, potentialDistractor))) {
                 options.push(potentialDistractor);
             }
         }
 
-        options = shuffleArray(options);
+        // **حل أخير: إذا لم نحصل على 3 خيارات فريدة بعد كل المحاولات**
+        while (options.length < 3) {
+            let fallbackDistractor = null;
+            // محاولة توفير مشتتات بديلة ذات صلة بالنوع
+            if (currentMainCategoryKey === 'philosophy' && specificWrongAnswerType) {
+                const specificFallbackPool = defaultData.philosophy.resources[specificWrongAnswerType];
+                if (specificFallbackPool) {
+                    fallbackDistractor = shuffleArray(specificFallbackPool.filter(fb => fb && !options.some(opt => isCloseEnough(opt, fb))))[0];
+                }
+            } else { // للأحداث والشخصيات والمصطلحات
+                // هنا يمكن أن يكون البديل من نفس نوع الإجابة الصحيحة أو المصطلحات/التعريفات العامة
+                // للحفاظ على البساطة، سنقوم بسحب عشوائي من pool كبير إذا فشلت كل المحاولات
+                const allTermsAndDefinitions = Object.values(defaultData).flatMap(category => 
+                    Object.values(category).flatMap(subCategory => {
+                        // استبعاد فئة resources من التسطيح للحصول على مصطلحات/تعريفات فعلية
+                        if (typeof subCategory === 'object' && subCategory !== defaultData.philosophy.resources) {
+                             return subCategory.map(card => card.term).concat(subCategory.map(card => card.definition));
+                        }
+                        return [];
+                    })
+                ).filter(item => item !== undefined && item !== null); // تصفية أي قيم undefined/null
+
+                fallbackDistractor = shuffleArray(allTermsAndDefinitions.filter(d => d && !options.some(opt => isCloseEnough(opt, d))))[0];
+            }
+
+            if (fallbackDistractor) {
+                options.push(fallbackDistractor);
+            } else {
+                // كحل أخير جداً جداً في حالات نادرة جداً
+                // نلجأ إلى خيارات عامة لا ترتبط بالنوع
+                const veryGenericFallbacks = ['خيار بديل 1', 'خيار بديل 2', 'خيار بديل 3', 'إجابة عامة'];
+                const randomVeryGenericFallback = shuffleArray(veryGenericFallbacks.filter(fb => !options.some(opt => isCloseEnough(opt, fb))))[0];
+                if (randomVeryGenericFallback) {
+                    options.push(randomVeryGenericFallback);
+                } else {
+                    options.push(`خيار ${options.length + 1}`);
+                }
+            }
+        }
+
+        options = shuffleArray(options); // خلط الخيارات النهائية مرة أخيرة
 
         options.forEach(choiceText => {
             const button = document.createElement('button');
@@ -549,11 +822,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    function handleChoiceClick(clickedButton, selectedAnswer, correctAnswer) {
+    function handleChoiceClick(clickedButton, selectedAnswer, currentCorrectAnswer) {
         currentChoices.forEach(btn => btn.disabled = true);
         helpButton.disabled = true;
 
-        const isCorrect = isCloseEnough(selectedAnswer, correctAnswer);
+        const isCorrect = isCloseEnough(selectedAnswer, currentCorrectAnswer);
 
         if (isCorrect) {
             quizScore++;
@@ -562,10 +835,10 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             updateQuizFeedback('غير صحيح.', 'error');
             clickedButton.classList.add('incorrect');
-            correctAnswerDisplay.textContent = `الإجابة الصحيحة: "${correctAnswer}"`;
+            correctAnswerDisplay.textContent = `الإجابة الصحيحة: "${currentCorrectAnswer}"`;
             correctAnswerDisplay.classList.remove('hidden');
             currentChoices.forEach(btn => {
-                if (isCloseEnough(btn.dataset.answer, correctAnswer)) {
+                if (isCloseEnough(btn.dataset.answer, currentCorrectAnswer)) {
                     btn.classList.add('correct');
                 }
             });
@@ -589,8 +862,25 @@ document.addEventListener('DOMContentLoaded', () => {
         helpUsedThisQuestion = true;
         helpButton.disabled = true;
 
+        const currentQCard = quizQuestions[currentQuizIndex]; // الكارد الحالي
+        let actualCorrectAnswer = currentQCard.answer; // الإجابة الافتراضية
+
+        // للتعامل مع سؤال "اعط واحد من الحسيون"
+        if (currentMainCategoryKey === 'philosophy' && currentQCard.answer === 'الحسيونFlas') {
+            // هنا، الإجابة الصحيحة الفعلية هي التي تم اختيارها وتوليدها في generateChoices
+            // نبحث عنها بين الخيارات المعروضة
+            const generatedCorrectButton = currentChoices.find(btn => btn.classList.contains('correct') && !btn.classList.contains('hidden'));
+            if (generatedCorrectButton) {
+                actualCorrectAnswer = generatedCorrectButton.dataset.answer;
+            } else {
+                // في حالة نادرة جداً لم يتم تحديد الإجابة الصحيحة بعد، نأخذها من pool
+                actualCorrectAnswer = shuffleArray([...currentQCard.correctAnswerPool])[0];
+            }
+        }
+
+
         const incorrectChoices = currentChoices.filter(btn =>
-            !isCloseEnough(btn.dataset.answer, quizQuestions[currentQuizIndex].answer) && !btn.classList.contains('hidden')
+            !isCloseEnough(btn.dataset.answer, actualCorrectAnswer) && !btn.classList.contains('hidden')
         );
 
         if (incorrectChoices.length > 1) {
@@ -631,6 +921,9 @@ document.addEventListener('DOMContentLoaded', () => {
             // else if (category === 'terms') { // إذا أردت تفعيل إضافة المصطلحات يدويا
             //     container = document.getElementById('terms-inputs');
             // }
+            // else if (category === 'philosophy') { // إذا أردت تفعيل إضافة الفلسفة يدويا
+            //     container = document.getElementById('philosophy-inputs');
+            // }
             if (container) { // تأكد من أن الحاوية موجودة قبل إضافة العنصر
                 createFlashcardEntry(container, '', '', category);
             }
@@ -663,29 +956,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initial setup
     function loadDefaultFlashcardsToInputs() {
-        eventInputsContainer.innerHTML = '';
-        personalityInputsContainer.innerHTML = '';
-        // لا نقوم بملء حقول الإدخال الافتراضية هنا لتجنب تكرار البيانات على الواجهة
-        // إذا أردت عرض البيانات الافتراضية في حقول الإدخال، قم بإلغاء تعليق الأسطر التالية:
-        // for (const key in defaultData.events) {
-        //     defaultData.events[key].forEach(card => {
-        //         createFlashcardEntry(eventInputsContainer, card.term, card.definition, 'events');
-        //     });
-        // }
-        // for (const key in defaultData.personalities) {
-        //     defaultData.personalities[key].forEach(card => {
-        //         createFlashcardEntry(personalityInputsContainer, card.term, card.definition, 'personalities');
-        //     });
-        // }
-        // إذا أردت أيضاً عرض المصطلحات في حقول إدخال خاصة بها، ستحتاج لإنشاء terms-inputs div وربطها هنا:
-        // const termsInputsContainer = document.getElementById('terms-inputs');
-        // if (termsInputsContainer) {
-        //     for (const key in defaultData.terms) {
-        //         defaultData.terms[key].forEach(card => {
-        //             createFlashcardEntry(termsInputsContainer, card.term, card.definition, 'terms');
-        //         });
-        //     }
-        // }
+        // نترك هذه الوظيفة فارغة حالياً لأننا لا نملأ حقول الإدخال بالبيانات الافتراضية
+        // لتبسيط الواجهة ولأن البيانات ثابتة في كود JS
     }
 
     loadDefaultFlashcardsToInputs();
