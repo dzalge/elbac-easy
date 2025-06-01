@@ -585,6 +585,9 @@ h1 {
         padding: 10px 20px;
         font-size: 1em;
     }
+    .sub-category-buttons { /* تعديل ليتناسب مع الأزرار المتعددة */
+        flex-direction: column;
+    }
     .category-actions {
         flex-direction: column;
         gap: 10px;
