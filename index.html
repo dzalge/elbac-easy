@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مليحة القراية</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=IBM+Plex+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    
+    <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
     <div class="background-animation"></div>
@@ -18,7 +19,7 @@
 
         <div id="input-section" class="section">
             <h2 class="section-title">الصبر مفتاح النجاح</h2>
-            <p class="instructions">زيد وش حبيت</p>
+            <p class="instructions">اختر فئة لبدء الاختبار.</p>
             
             <div class="category-section">
                 <h3 class="category-title">الأحداث التاريخية</h3>
@@ -27,9 +28,7 @@
                     <button class="action-btn primary-btn start-category-quiz-btn" data-category="events" data-sub-category="algerianRevolutionEvents">تواريخ الثورة</button>
                     <button class="action-btn primary-btn start-category-quiz-btn" data-category="events" data-sub-category="palestineEvents">تواريخ فلسطين</button>
                 </div>
-                <div id="event-inputs" class="flashcard-category-inputs custom-scrollbar">
-                    </div>
-                </div>
+            </div>
 
             <div class="category-section">
                 <h3 class="category-title">الشخصيات</h3>
@@ -37,9 +36,7 @@
                     <button class="action-btn primary-btn start-category-quiz-btn" data-category="personalities" data-sub-category="coldWarPersonalities">شخصيات الحرب الباردة</button>
                     <button class="action-btn primary-btn start-category-quiz-btn" data-category="personalities" data-sub-category="algerianRevolutionPersonalities">شخصيات الثورة</button>
                 </div>
-                <div id="personality-inputs" class="flashcard-category-inputs custom-scrollbar">
-                    </div>
-                </div>
+            </div>
 
             <div class="category-section">
                 <h3 class="category-title">المصطلحات</h3>
@@ -48,16 +45,28 @@
                     <button class="action-btn primary-btn start-category-quiz-btn" data-category="terms" data-sub-category="algerianRevolutionTerms">مصطلحات الثورة</button>
                     <button class="action-btn primary-btn start-category-quiz-btn" data-category="terms" data-sub-category="geographyTerms">مصطلحات الجغرافيا</button>
                 </div>
-                </div>
+            </div>
 
             <div class="category-section">
                 <h3 class="category-title">الفلسفة</h3>
                 <div class="sub-category-buttons">
                     <button class="action-btn primary-btn start-category-quiz-btn" data-category="philosophy" data-sub-category="hypothesis">الفرضية</button>
                 </div>
+            </div>
+            
+            <div class="category-section">
+                <h3 class="category-title">الفيزياء</h3>
+                <div class="sub-category-buttons">
+                    <button class="action-btn primary-btn start-category-quiz-btn" data-category="physics" data-sub-category="chemistryTheoreticalQuestions">اسئلة نظرية وحدة 1 (كيمياء)</button>
+                    <button class="action-btn primary-btn start-category-quiz-btn" data-category="physics" data-sub-category="unit2Mechanics">اسئلة نظرية الوحدة 2 (ميكانيك)</button>
+                    <button class="action-btn primary-btn start-category-quiz-btn" data-category="physics" data-sub-category="unit3ElectricalPhenomena">اسئلة نظرية الوحدة 3 (كهرباء)</button>
+                    <button class="action-btn primary-btn start-category-quiz-btn" data-category="physics" data-sub-category="unit4ChemicalEquilibrium">اسئلة نظرية الوحدة 4 (كيمياء)</button>
+                    <button class="action-btn primary-btn start-category-quiz-btn" data-category="physics" data-sub-category="unit5NuclearTransformations">اسئلة نظرية الوحدة 5 (نووية)</button>
+                    <button class="action-btn primary-btn start-category-quiz-btn" data-category="physics" data-sub-category="unit6TheoreticalQuestions">اسئلة نظرية الوحدة 6 (كيمياء)</button>
                 </div>
+            </div>
 
-            <p id="input-message" class="message"></p>
+            <p id="input-message" class="message hidden"></p>
         </div>
 
         <div id="quiz-section" class="section hidden">
@@ -74,12 +83,13 @@
 
             <div class="answer-area">
                 <div id="choice-buttons-container" class="choice-buttons-container">
+                    <!-- Choice buttons will be generated here by JavaScript -->
                 </div>
-                <button id="help-button" class="action-btn help-btn">تعبز تولي طري</button>
+                <button id="help-button" class="action-btn help-btn">إظهار الأجوبة</button>
             </div>
 
             <div id="feedback-area">
-                <p id="quiz-feedback-display" class="message"></p>
+                <p id="quiz-feedback-display" class="message hidden"></p>
                 <p id="correct-answer-display" class="correct-info hidden"></p>
                 <button id="next-question-btn" class="action-btn hidden">التالي</button>
                 <button id="restart-quiz-btn" class="action-btn hidden">إعادة الاختبار</button>
